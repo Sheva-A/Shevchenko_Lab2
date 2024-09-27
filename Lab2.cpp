@@ -1,18 +1,28 @@
 #include <iostream>
+#include <Windows.h>
 using namespace std;
 
 int main()
 {
-    int i;
-    cout << "Enter a number" <<endl;
-    cin>>i;
-    int a = i/100;
-    int c = i%10;
-    if(a == c) {
-        cout << "The number is a palindrome" <<endl;
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    int number, originalNumber, reverseNumber = 0;
+    cout << "Введіть число: ";
+    cin >> number;
+
+    originalNumber = number; 
+
+    while (number != 0) {
+        reverseNumber = reverseNumber * 10 + number % 10;
+        number /= 10;
+    }
+
+    if (originalNumber == reverseNumber) {
+        cout << "Число є паліндромом!";
     }
     else {
-        cout << "The number isn't a palindrome" <<endl;
+        cout << "Число не є паліндромом!";
     }
 
     return 0;
